@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    android:id="@+id/sett"
+    android:background="#FFFFFF">
+
+
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView4"
+        android:layout_alignStart="@+id/imageView4"
+        android:layout_below="@+id/imageView2"
+        android:id="@+id/table_sett">
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remove slideshow"
+            android:textColor="#000"
+            android:padding="25dp"
+            android:textSize="20sp"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:id="@+id/checkBox"
+            android:layout_column="6" />
+    </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Decrease the number of slideshow cycles"
+                android:textColor="#000"
+                android:padding="25dp"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textColor="#000"
+                android:id="@+id/numberslide"
+                android:layout_column="6" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Remove ads and support further development"
+                android:textColor="#000"
+                android:padding="25dp"
+                android:textSize="20sp"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBox2"
+                android:layout_column="6" />
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About"
+                android:id="@+id/about"
+                android:textColor="#000"
+                android:padding="25dp"
+                android:textSize="20sp"
+                android:clickable="true" />
+        </TableRow>
+
+
+    </TableLayout>
+
+</RelativeLayout>
