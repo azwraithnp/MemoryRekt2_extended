@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -44,6 +45,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     public int currentimage2index=0;
+    public int currentimage2index2=0;
     public int lives_counter = 3;
     public int dimen_count = 0;
     public String num_s;
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     public int test=0;
     public int test2 = 0;
     CountDownTimer ct;
+    CountDownTimer ct2;
     ScrollView scroll;
     private RelativeLayout main_layout;
     private LinearLayout verticalOuterLayout2;
@@ -80,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     private ImageView level1;
     private TextView dimension123;
     private TextView about;
+    private ImageView level2;
 
 
 
@@ -110,6 +114,32 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             "Black hole", "Heartstopper Aura", "Blink", "Exorcism", "Shallow grave", "Ion shell", "Vacuum",
             "Cold feet", "Cold snap", "Exort", "Ghost walk", "Invoke", "Quas", "Sunstrike", "Wex"};
 
+    String[] SKILLS2_NAME = {"Great Cleave", "God's Strength", "Aftershock", "Echo Slam", "Torrent", "Tidebringer", "Ghostship", "Craggy Exterior",
+            "Grow", "Breathe Fire", "Dragon Tail", "Elder Dragon Form", "Battery Assault", "Guardian Angel", "Unstable Concoction", "Chemical Rage",
+            "Inner Vitality", "Life Break", "Leech Seed", "Living Armor", "Overgrowth", "Spirits", "Relocate", "Double Edge", "Viscous Nasal Goo",
+            "Quill Spray", "Bristleback", "Chakram", "Echo Stomp", "Astral Spirit", "Frozen Sigil", "Icarus Dive", "Supernova", "Berserker's Call",
+            "Counter Helix", "Flesh Heap", "Dismember", "Sprint", "Slithereen Crush", "Gush", "Kraken Shell", "Anchor Smash", "Wraithfire Blast",
+            "Vampiric Aura", "Rage", "Open Wounds", "Infest", "Empowering Haste", "Nether Strike", "Void", "Darkness", "Devour", "Scorched Earth",
+            "LVL? Death", "Decay", "Soul Rip", "Summon Wolves", "Howl", "Shapeshift", "Phantasm", "Empower", "Skewer", "Mist Coil", "Aphotic Shield",
+            "Mana Break", "Spell Sheild", "Mana Void", "Gust", "Blade Fury", "Star Storm", "Sacred Arrow", "Leap", "Moonlight Shadow", "Waveform",
+            "Morph(Agility)", "Morph(Strength)", "Spirit Lance", "Doppleganger", "Magic missile", "Wave of Terror", "Nether swap", "Backstab",
+            "Blink Strike", "Refraction", "Meld", "PSI Blade", "Lucent Beam", "Moon glaive", "Shadow Walk", "Earthshock", "Overpower", "Fury Swipes",
+            "Rocket Barrage", "Homing Missile", "Summon Spirit Bear", "Mirror Image", "Ensnare", "Rip Tide", "Song of the Siren End", "Whirling Axe(Ranged)",
+            "Whirling Axe(Melee)", "Battle Trance", "Searing Chains", "Sleight of fist", "Fire remnant", "Bloodrage", "Blood Rite", "Presence of Dark Lord",
+            "Requiem of Souls", "Plasma feild", "Static link", "Venomous Gale", "Poison Nova", "Time Walk", "Time lock", "Phantom Strike", "Coup de grace",
+            "Corrosive Skin", "Viper Strike", "Searing Arrow", "Skeleton Walk", "Spawn Spiderlings", "Spin Web", "Shukuchi", "Time lapse", "Spectral dagger",
+            "Desolate", "Haunt", "Divided We Stand", "Spiked Carapace", "Vendetta", "Dark Pact", "Essence Shift", "Shadow Dance", "Split Shot", "Mystic Snake",
+            "Reflection", "Metamorphosis", "Crystal Nova", "Arcane Aura", "Freezing Field", "Illusory Orb", "Static remnant", "Electric vortex", "Focus Fire",
+            "Windrun", "Arc Lightning", "Lightning Bolt", "Fiery Soul", "Light Strike Array", "Heat Seeking Missile", "Nature's Call", "Wrath of Nature",
+            "Enchant", "Nature's Attendants", "Ice Path", "Liquid Fire", "Hand Of God", "Curse of the Silent", "Glaives of Wisdom", "Last Word", "Bloodlust",
+            "Fireblast", "Ignite", "Fade Bolt", "Kinetic Field", "Static Storm", "Illuminate", "Mana Leak", "Recall", "Spirit Form", "Mystic Flare", "Purifying Flames",
+            "Land Mines", "Minefield Sign", "Remote Mines", "Suicide Squad, Attack", "Brain Sap", "Fiend's Grip", "Chain Frost", "Frost Blast", "Earth Spike",
+            "Paralyzing Cask", "Demonic Conversion", "Midnight Pulse", "Death Pulse", "Reaper's Scythe", "Choatic Offering", "Fatal Bonds", "Shadow Words",
+            "Scream of Pain", "Sonic Wave", "Crypt Swarm", "Life Drain", "Nether Blast", "Nether Ward", "Nether Blast", "Poison Touch", "Shadow Wave", "Lightning Storm",
+            "Split Earth", "Surge", "Wall of Replica", "Flamming Lasso", "Sticky Napalm", "Ice Blast", "Alacrity", "Chaos Meter", "EMP", "Forge Spirit", "Ice Wall", "Tornado",
+            "Arcane Orb", "Astral Imprisonment", "Sanity's Eclipse", "Summon Familiars", "Cold Embrace", "Winter's Curse"};
+
+
     int[] SKILLS1_IDS = {R.drawable.hammer, R.drawable.fissure, R.drawable.xmark, R.drawable.avalanche, R.drawable.toss, R.drawable.cogs, R.drawable.flare,
             R.drawable.hookshot, R.drawable.purification, R.drawable.repel, R.drawable.spray, R.drawable.greed, R.drawable.spear, R.drawable.tether,
             R.drawable.stomp, R.drawable.stampede, R.drawable.shards, R.drawable.snowball, R.drawable.punch, R.drawable.duel, R.drawable.hunger, R.drawable.culling,
@@ -119,12 +149,36 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             R.drawable.shrapnel, R.drawable.headshot, R.drawable.take, R.drawable.assas, R.drawable.eclipse, R.drawable.shuriken,
             R.drawable.track, R.drawable.song, R.drawable.thirst, R.drawable.rupture, R.drawable.shadowrage, R.drawable.necromastery,
             R.drawable.backtrack, R.drawable.chrono, R.drawable.dagger, R.drawable.blur, R.drawable.poof, R.drawable.pounce, R.drawable.frostbite,
-            R.drawable.coil, R.drawable.ball, R.drawable.shackleshot, R.drawable.powershot, R.drawable.thunder,
+            R.drawable.coil, R.drawable.ball, R.drawable.shackleshot, R.drawable.powershot, R.drawable.wrath,
             R.drawable.laguna, R.drawable.hex, R.drawable.mass, R.drawable.shackles, R.drawable.laser, R.drawable.march,
             R.drawable.rearm, R.drawable.sprout, R.drawable.teleportation, R.drawable.silence, R.drawable.multicast, R.drawable.steal,
             R.drawable.glimpse, R.drawable.magic, R.drawable.armor_lich, R.drawable.sacrifice, R.drawable.finger, R.drawable.hex_lion, R.drawable.drain, R.drawable.death_w,
             R.drawable.black, R.drawable.heartstopper, R.drawable.blink_qop, R.drawable.exorcism, R.drawable.grave, R.drawable.ion, R.drawable.vacuum,
             R.drawable.cold, R.drawable.snap, R.drawable.exort, R.drawable.ghost, R.drawable.invoke, R.drawable.quas, R.drawable.sun, R.drawable.wex};
+
+
+    int[] SKILLS2_IDS = {R.drawable.cleave, R.drawable.strength, R.drawable.aftershock, R.drawable.echo_slam, R.drawable.torrent, R.drawable.tidebringer, R.drawable.ghostship, R.drawable.exterior,
+                         R.drawable.grow, R.drawable.fire, R.drawable.tail, R.drawable.elder, R.drawable.assault, R.drawable.angel, R.drawable.unstable, R.drawable.rage, R.drawable.inner, R.drawable.life, R.drawable.leech,
+                         R.drawable.armor, R.drawable.overgrowth, R.drawable.spirits, R.drawable.relocate, R.drawable.double2, R.drawable.goo, R.drawable.quill, R.drawable.bristle, R.drawable.chakram,
+                         R.drawable.echo, R.drawable.astral, R.drawable.frozen, R.drawable.icarus, R.drawable.supernova, R.drawable.call, R.drawable.helix, R.drawable.heap, R.drawable.dismember, R.drawable.sprint,
+                         R.drawable.crush, R.drawable.shell, R.drawable.anchor, R.drawable.hellfire, R.drawable.vampiric, R.drawable.rage_life, R.drawable.open, R.drawable.infest, R.drawable.haste, R.drawable.nether,
+                         R.drawable.void2, R.drawable.darkness, R.drawable.devour, R.drawable.scorched, R.drawable.lvl, R.drawable.decay, R.drawable.soul, R.drawable.summon, R.drawable.howl, R.drawable.shapeshift, R.drawable.phantasm,
+                         R.drawable.empower, R.drawable.skewer, R.drawable.mist, R.drawable.shield, R.drawable.mbreak, R.drawable.spell, R.drawable.mana, R.drawable.wave, R.drawable.fury, R.drawable.starfall, R.drawable.sacred, R.drawable.leap,
+                         R.drawable.shadow, R.drawable.waveform, R.drawable.morph_agi, R.drawable.morph_str, R.drawable.lance, R.drawable.dopple, R.drawable.missile, R.drawable.terror,
+                         R.drawable.swap, R.drawable.backstab, R.drawable.blinkstr, R.drawable.refraction, R.drawable.meld, R.drawable.psi, R.drawable.beam, R.drawable.moon, R.drawable.earthshock,
+                         R.drawable.overpower, R.drawable.swipes, R.drawable.barrage, R.drawable.homing, R.drawable.summon_bear, R.drawable.mirror, R.drawable.ensnare, R.drawable.riptide, R.drawable.cancel,
+                         R.drawable.whirling_r, R.drawable.whirling_m, R.drawable.trance, R.drawable.searing, R.drawable.sleight, R.drawable.fire_r, R.drawable.bloodrage, R.drawable.blood, R.drawable.presence,
+                         R.drawable.requiem, R.drawable.plasma, R.drawable.link, R.drawable.gale, R.drawable.nova, R.drawable.walk, R.drawable.lock, R.drawable.phantom, R.drawable.coup, R.drawable.corossive,
+                         R.drawable.viper_s, R.drawable.searing_clinkz, R.drawable.skeleton, R.drawable.spiderlings, R.drawable.web, R.drawable.shukuchi, R.drawable.lapse, R.drawable.spectral, R.drawable.desolate,
+                         R.drawable.haunt, R.drawable.divided, R.drawable.spiked, R.drawable.vendetta, R.drawable.dark, R.drawable.essence, R.drawable.shadowd, R.drawable.split, R.drawable.mystic, R.drawable.reflection,
+                         R.drawable.metamorphis, R.drawable.crystal, R.drawable.arcane, R.drawable.freezing, R.drawable.orb, R.drawable.static2, R.drawable.vortex, R.drawable.focus, R.drawable.windrun, R.drawable.arc,
+                         R.drawable.bolt_zeus, R.drawable.fiery, R.drawable.light, R.drawable.hs_missile, R.drawable.nature, R.drawable.enchant, R.drawable.attendants, R.drawable.ice, R.drawable.liquid, R.drawable.hand,
+                         R.drawable.hand, R.drawable.curse_silencer, R.drawable.wisdom, R.drawable.last, R.drawable.bloodlust, R.drawable.fireblast, R.drawable.ignite, R.drawable.fade, R.drawable.kinetic, R.drawable.storm,
+                         R.drawable.illuminate, R.drawable.leak, R.drawable.recall, R.drawable.form, R.drawable.mystic, R.drawable.flames, R.drawable.mines, R.drawable.sign, R.drawable.remote, R.drawable.suicide,
+                         R.drawable.sap, R.drawable.grip, R.drawable.chain, R.drawable.frost, R.drawable.frost_lich, R.drawable.spike, R.drawable.cask, R.drawable.demonic, R.drawable.pulse, R.drawable.pulse_necro,
+                         R.drawable.scythe, R.drawable.chaotic, R.drawable.fatal, R.drawable.word, R.drawable.scream, R.drawable.sonic, R.drawable.crypt, R.drawable.life, R.drawable.blast, R.drawable.nether_w, R.drawable.touch,
+                         R.drawable.wave_dazzle, R.drawable.lightning, R.drawable.split_earth, R.drawable.surge, R.drawable.wall, R.drawable.flaming, R.drawable.napalm, R.drawable.blast, R.drawable.alacrity, R.drawable.chaos,
+                         R.drawable.emp, R.drawable.forge, R.drawable.ice_wall, R.drawable.tornado, R.drawable.arcane_o, R.drawable.astral_i, R.drawable.sanity, R.drawable.familiars, R.drawable.embrace, R.drawable.curse_winter};
 
     int[] IMAGE_IDS = {R.drawable.earthshaker, R.drawable.sven, R.drawable.tiny,
             R.drawable.kunkka, R.drawable.beastmaster, R.drawable.dragon_knight, R.drawable.clockwerk, R.drawable.omniknight, R.drawable.huskar, R.drawable.alchemist, R.drawable.brewmaster, R.drawable.treant_protecter, R.drawable.wisp, R.drawable.centaur_warrunner, R.drawable.timbersaw, R.drawable.bristleback, R.drawable.tusk, R.drawable.elder_titan};
@@ -139,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     int[] IMAGE_IDS6 = {R.drawable.bane, R.drawable.lich, R.drawable.lion,
             R.drawable.witch_doctor, R.drawable.enigma, R.drawable.necrophos, R.drawable.warlock, R.drawable.queen_of_pain, R.drawable.death_prophet, R.drawable.pugna, R.drawable.dazzle, R.drawable.leshrac, R.drawable.dark_seer, R.drawable.batrider, R.drawable.ancient_apparition, R.drawable.invoker, R.drawable.obsidian_destroyer, R.drawable.shadow_demon, R.drawable.visage, R.drawable.winter_wyvern};
     private ImageView img2;
+
 
     @Override @TargetApi(13)
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,6 +242,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         lives_count = (ImageView)findViewById(R.id.lives);
         lives_text = (TextView)findViewById(R.id.lives_text);
         level1 = (ImageView)findViewById(R.id.level1);
+        level2 = (ImageView)findViewById(R.id.level2);
+
+        level2.setClickable(false);
 
 
 
@@ -384,6 +442,25 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     }
 
+    public void onClickLevel2(View v)
+    {
+        main_layout.setBackgroundResource(R.drawable.axe_w);
+        scroll.setVisibility(View.GONE);
+        hero_p.setVisibility(View.VISIBLE);
+        skill.setVisibility(View.VISIBLE);
+        countd.setVisibility(View.VISIBLE);
+        circle.setVisibility(View.VISIBLE);
+        views[0].setVisibility(View.VISIBLE);
+        views[1].setVisibility(View.VISIBLE);
+        views[2].setVisibility(View.VISIBLE);
+        lives_count.setVisibility(View.VISIBLE);
+        lives_text.setVisibility(View.VISIBLE);
+        portrait2();
+
+    }
+
+
+
     public void portrait() {
 
         ct = new CountDownTimer(50000, 1000) {
@@ -434,7 +511,16 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(), "Correct!", Toast.LENGTH_SHORT).show();
                 ct.cancel();
-                portrait();
+                if(SKILLS1_NAME[currentimage2index % SKILLS1_NAME.length].equals("Wex"))
+                {
+                    level2.setBackgroundResource(R.drawable.level2);
+                    level2.setClickable(true);
+                    levelReset();
+                }
+                else
+                {
+                    portrait();
+                }
             }
         });
 
@@ -473,8 +559,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                       }
                       else
                       {
-                          lives_count.setVisibility(View.GONE);
-                          lives_text.setVisibility(View.GONE);
                           ct.cancel();
                           currentimage2index=0;
                           levelReset();
@@ -510,6 +594,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         views[0].setVisibility(View.GONE);
         views[1].setVisibility(View.GONE);
         views[2].setVisibility(View.GONE);
+        lives_text.setVisibility(View.GONE);
+        lives_count.setVisibility(View.GONE);
     }
 
     public void addImagesToView(){
@@ -977,6 +1063,119 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             timerTask = null;
         }
     }
+
+    public void portrait2() {
+
+        lives_text.setVisibility(View.VISIBLE);
+        lives_count.setVisibility(View.VISIBLE);
+
+        ct2 = new CountDownTimer(50000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                countd.setText("" + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                countd.setText("");
+                lives_counter--;
+                portrait2();
+            }
+        }.start();
+
+        hero_p.setImageResource(SKILLS2_IDS[currentimage2index2 % SKILLS2_IDS.length]);
+
+        test = 1;
+        Random r = new Random();
+        int random = r.nextInt(3);
+        Random r2 = new Random();
+
+        if(lives_counter==3)
+        {
+            lives_count.setImageResource(R.drawable.lives3);
+        }
+        else if(lives_counter==2)
+        {
+            lives_count.setImageResource(R.drawable.lives2);
+        }
+        else if(lives_counter==1)
+        {
+            lives_count.setImageResource(R.drawable.lives1);
+        }
+        else
+        {
+            lives_count.setVisibility(View.GONE);
+            lives_text.setVisibility(View.GONE);
+
+        }
+
+
+        views[random].setVisibility(View.VISIBLE);
+        views[random].setText(SKILLS2_NAME[currentimage2index2 % SKILLS2_NAME.length]);
+
+        views[random].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getBaseContext(), "Correct!", Toast.LENGTH_SHORT).show();
+                ct2.cancel();
+                portrait2();
+            }
+        });
+
+
+        for(TextView vz : views)
+        {
+            if(vz != views[random])
+            {
+
+
+                int random2 = r2.nextInt(SKILLS2_NAME.length);
+                if(SKILLS2_NAME[random2] != SKILLS2_NAME[currentimage2index2 % SKILLS2_NAME.length])
+                {
+                    vz.setVisibility(View.VISIBLE);
+                    vz.setText(SKILLS2_NAME[random2]);
+
+                }
+            }
+        }
+
+        for(int itest=0; itest<=2; itest++)
+        {
+            if(views[itest] != views[random])
+            {
+                views[itest].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getBaseContext(), "Try Again!", Toast.LENGTH_SHORT).show();
+                        lives_counter--;
+                        if (lives_counter == 3) {
+                            lives_count.setImageResource(R.drawable.lives3);
+                        } else if (lives_counter == 2) {
+                            lives_count.setImageResource(R.drawable.lives2);
+                        } else if (lives_counter == 1) {
+                            lives_count.setImageResource(R.drawable.lives1);
+                        }
+                        else
+                        {
+                            lives_count.setVisibility(View.GONE);
+                            lives_text.setVisibility(View.GONE);
+                            ct2.cancel();
+                            currentimage2index2=0;
+                            levelReset();
+
+
+                        }
+                    }
+                });
+            }
+        }
+
+
+
+        currentimage2index2++;
+
+
+    }
+
 
 }
 
