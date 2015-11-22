@@ -38,8 +38,10 @@
                 <action android:name="ANDROID.INTENT.ACTION.MAIN" />
             </intent-filter>
         </activity>
+
         <activity android:name=".heroesWebview"
             android:theme="@style/AppTheme"></activity>
+
     </application>
 
 </manifest>

@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     TextView countd;
     public int test=0;
     public int test2 = 0;
+    public String hero_name="";
     CountDownTimer ct;
     CountDownTimer ct2;
     ScrollView scroll;
@@ -66,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     private LinearLayout verticalOuterLayout;
     private ScrollView verticalScrollview;
     private TableLayout table_mode;
-    private TableRow table_mode_row2;
     private int verticalScrollMax;
     private Timer scrollTimer		=	null;
     private TimerTask clickSchedule;
@@ -80,11 +80,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     private ImageView clickedButton2 = null;
     private ImageView lives_count;
     private TextView lives_text;
-    private ImageView level1;
     private TextView dimension123;
     private TextView about;
     private ImageView level2;
-
 
 
 
@@ -182,16 +180,34 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     int[] IMAGE_IDS = {R.drawable.earthshaker, R.drawable.sven, R.drawable.tiny,
             R.drawable.kunkka, R.drawable.beastmaster, R.drawable.dragon_knight, R.drawable.clockwerk, R.drawable.omniknight, R.drawable.huskar, R.drawable.alchemist, R.drawable.brewmaster, R.drawable.treant_protecter, R.drawable.wisp, R.drawable.centaur_warrunner, R.drawable.timbersaw, R.drawable.bristleback, R.drawable.tusk, R.drawable.elder_titan};
+
+    String[] IMAGE_NAMES = {"Earthshaker", "Sven", "Tiny", "Kunkka", "Beastmaster", "Dragon_Knight", "Clockwerk", "Omniknight", "Huskar", "Alchemist", "Brewmaster", "Treant_Protector", "Wisp", "Centaur_Warrunner", "Timbersaw", "Bristleback", "Tusk", "Elder_Titan"};
+
     int[] IMAGE_IDS2 = {R.drawable.legion_commander, R.drawable.earth_spirit, R.drawable.phoenix,
             R.drawable.axe, R.drawable.pudge, R.drawable.sand_king, R.drawable.slardar, R.drawable.tidehunter, R.drawable.wraith_king, R.drawable.lifestealer, R.drawable.night_stalker, R.drawable.doom, R.drawable.spirit_breaker, R.drawable.lycan, R.drawable.chaos_knight, R.drawable.undying, R.drawable.magnus, R.drawable.abaddon};
+
+    String[] IMAGE_NAMES2 = {"Legion_Commander", "Earth_Spirit", "Phoenix", "Axe", "Pudge", "Sand_king", "Slardar", "Tidehunter", "Wraith_King", "Lifestealer", "Night_Stalker", "Doom", "Spirit_Breaker", "Lycan", "Chaos_Knight", "Undying", "Magnus", "Abaddon"};
+
     int[] IMAGE_IDS3 = {R.drawable.anti_mage, R.drawable.drow_ranger, R.drawable.juggernaut,
             R.drawable.mirana, R.drawable.morphling, R.drawable.phantom_lancer, R.drawable.vengeful_spirit, R.drawable.riki, R.drawable.sniper, R.drawable.templar_assassin, R.drawable.luna, R.drawable.bounty_hunter, R.drawable.ursa, R.drawable.gyrocopter, R.drawable.lone_druid, R.drawable.naga_siren, R.drawable.troll_warlord, R.drawable.ember_spirit};
+
+    String[] IMAGE_NAMES3 = {"Anti_Mage", "Drow_Ranger", "Juggernaut", "Mirana", "Morphling", "Phantom_Lancer", "Vengeful_Spirit", "Riki", "Sniper", "Templar_Assassin", "Luna", "Bounty_Hunter", "Ursa", "Gyrocopter", "Lone_Druid", "Naga_Siren", "Troll_Warlord", "Ember_Spirit"};
+
     int[] IMAGE_IDS4 = {R.drawable.bloodseeker, R.drawable.shadow_fiend, R.drawable.razor,
             R.drawable.venomancer, R.drawable.faceless_void, R.drawable.phantom_assassin, R.drawable.viper, R.drawable.clinkz, R.drawable.broodmother, R.drawable.weaver, R.drawable.spectre, R.drawable.meepo, R.drawable.nyx_assassin, R.drawable.slark, R.drawable.medusa, R.drawable.terrorblade, R.drawable.crystal_maiden, R.drawable.puck};
+
+    String[] IMAGE_NAMES4 = {"Bloodseeker", "Shadow_Fiend", "Razor", "Venomancer", "Faceless_Void", "Phantom_Assasin", "Viper", "Clinkz", "Broodmother", "Weaver", "Spectre", "Meepo", "Nyx_Assassin", "Slark", "Medusa", "Terrorblade", "Crystal_Maiden", "Puck"};
+
     int[] IMAGE_IDS5 = {R.drawable.storm_spirit, R.drawable.windranger, R.drawable.zeus,
             R.drawable.lina, R.drawable.shadow_shaman, R.drawable.tinker, R.drawable.enchantress, R.drawable.jakiro, R.drawable.chen, R.drawable.silencer, R.drawable.ogre_magi, R.drawable.rubick, R.drawable.disruptor, R.drawable.keeper_of_the_light, R.drawable.skywrath_mage, R.drawable.oracle, R.drawable.techies};
+
+    String[] IMAGE_NAMES5 = {"Storm_Spirit", "Windranger", "Zeus", "Lina", "Shadow_Shaman", "Tinker", "Enchantress", "Jakiro", "Chen", "Silencer", "Ogre_Magi", "Rubick", "Disruptor", "Keeper_of_the_Light", "Skywrath_mage", "Oracle", "Techies"};
+
     int[] IMAGE_IDS6 = {R.drawable.bane, R.drawable.lich, R.drawable.lion,
             R.drawable.witch_doctor, R.drawable.enigma, R.drawable.necrophos, R.drawable.warlock, R.drawable.queen_of_pain, R.drawable.death_prophet, R.drawable.pugna, R.drawable.dazzle, R.drawable.leshrac, R.drawable.dark_seer, R.drawable.batrider, R.drawable.ancient_apparition, R.drawable.invoker, R.drawable.obsidian_destroyer, R.drawable.shadow_demon, R.drawable.visage, R.drawable.winter_wyvern};
+
+    String[] IMAGE_NAMES6 = {"Bane", "Lich", "Lion", "Witch_Doctor", "Enigma", "Necrophos", "Warlock", "Queen_of_Pain", "Death_Prophet", "Pugna", "Dazzle", "Leshrac", "Dark_Seer", "Batrider", "Ancient_Apparition", "Invoker", "Morphling", "Outworld_Devourer", "Shadow_Demon", "Visage", "Winter_Wyvern"};
+
     private ImageView img2;
 
 
@@ -238,10 +254,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         views[2] = (TextView)findViewById(R.id.ability3);
         modeScrollView = (ScrollView)findViewById(R.id.modescroll);
         table_mode = (TableLayout)findViewById(R.id.tablemode);
-        table_mode_row2 = (TableRow)findViewById(R.id.rowmode2);
         lives_count = (ImageView)findViewById(R.id.lives);
         lives_text = (TextView)findViewById(R.id.lives_text);
-        level1 = (ImageView)findViewById(R.id.level1);
         level2 = (ImageView)findViewById(R.id.level2);
 
         level2.setClickable(false);
@@ -254,7 +268,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             @Override
             public void onClick(View v) {
                 border_img.setBackgroundResource(R.drawable.whatsthatskill_final_clicked);
-                table_mode_row2.setBackgroundColor(Color.WHITE);
             }
         });
 
@@ -378,6 +391,19 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         editor.commit();
     }
 
+    private void saveInSplevel(String keylvl, int valuelvl)
+    {
+        SharedPreferences lvlstat = getApplicationContext().getSharedPreferences("Memory Rekt!3", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = lvlstat.edit();
+        editor.putInt(keylvl, valuelvl);
+        editor.commit();
+    }
+
+    private int getFromSplevel(String keylvl)
+    {
+        SharedPreferences lvlstat = getApplicationContext().getSharedPreferences("Memory Rekt!2", Context.MODE_PRIVATE);
+        return lvlstat.getInt(keylvl, 1);
+    }
 
 
     @Override
@@ -463,6 +489,13 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     public void portrait() {
 
+        views[0].setBackgroundResource(R.drawable.choice_box);
+        views[0].setTextColor(Color.BLACK);
+        views[1].setBackgroundResource(R.drawable.choice_box);
+        views[1].setTextColor(Color.BLACK);
+        views[2].setBackgroundResource(R.drawable.choice_box);
+        views[2].setTextColor(Color.BLACK);
+
         ct = new CountDownTimer(50000, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -480,7 +513,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         test = 1;
         Random r = new Random();
-        int random = r.nextInt(3);
+        final int random = r.nextInt(3);
         Random r2 = new Random();
 
         if(lives_counter==3)
@@ -509,11 +542,13 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         views[random].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                views[random].setBackgroundResource(R.drawable.choice_box_clicked);
+                views[random].setTextColor(Color.WHITE);
                 Toast.makeText(getBaseContext(), "Correct!", Toast.LENGTH_SHORT).show();
                 ct.cancel();
                 if(SKILLS1_NAME[currentimage2index % SKILLS1_NAME.length].equals("Wex"))
                 {
-                    level2.setBackgroundResource(R.drawable.level2);
+                    saveInSplevel("level", 2);
                     level2.setClickable(true);
                     levelReset();
                 }
@@ -541,13 +576,19 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             }
         }
 
+
+
         for(int itest=0; itest<=2; itest++)
         {
+            final int jtest = itest;
+
           if(views[itest] != views[random])
           {
               views[itest].setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
+                      views[jtest].setBackgroundResource(R.drawable.choice_box_clicked);
+                      views[jtest].setTextColor(Color.WHITE);
                       Toast.makeText(getBaseContext(), "Try Again!", Toast.LENGTH_SHORT).show();
                       lives_counter--;
                       if (lives_counter == 3) {
@@ -602,6 +643,11 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     public void levelReset()
     {
+        int lvls = getFromSplevel("level");
+        if(lvls == 2)
+        {
+            level2.setBackgroundResource(R.drawable.level2);
+        }
         lives_counter = 3;
         scroll.setVisibility(View.VISIBLE);
         hero_p.setVisibility(View.GONE);
@@ -623,6 +669,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         while(i<IMAGE_IDS.length){
             final ImageView img = new ImageView(this);
             img.setImageResource(IMAGE_IDS[i]);
+            final int j = i;
             img.setTag(i);
             img.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -633,6 +680,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                             clickTimer			=	null;
                         }
                         clickedButton			=	(ImageView)arg0;
+                        hero_name = IMAGE_NAMES[j];
                         stopAutoScrolling();
                         clickedButton.startAnimation(scaleFaceUpAnimation());
                         clickedButton.setSelected(true);
@@ -672,6 +720,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         while(i<IMAGE_IDS2.length){
             final ImageView img = new ImageView(this);
             img.setImageResource(IMAGE_IDS2[i]);
+            final int j=i;
             img.setTag(i);
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -682,6 +731,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                             clickTimer = null;
                         }
                         clickedButton = (ImageView) arg0;
+                        hero_name = IMAGE_NAMES2[j];
                         stopAutoScrolling();
                         clickedButton.startAnimation(scaleFaceUpAnimation());
                         clickedButton.setSelected(true);
@@ -721,6 +771,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         while(i<IMAGE_IDS3.length){
             final ImageView img = new ImageView(this);
             img.setImageResource(IMAGE_IDS3[i]);
+            final int j=i;
             img.setTag(i);
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -731,6 +782,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                             clickTimer = null;
                         }
                         clickedButton = (ImageView) arg0;
+                        hero_name = IMAGE_NAMES3[j];
                         stopAutoScrolling();
                         clickedButton.startAnimation(scaleFaceUpAnimation());
                         clickedButton.setSelected(true);
@@ -772,6 +824,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             test2 = 1;
             final ImageView img = new ImageView(this);
             img.setImageResource(IMAGE_IDS4[i]);
+            final int j=i;
             img.setTag(i);
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -782,6 +835,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                             clickTimer = null;
                         }
                         clickedButton = (ImageView) arg0;
+                        hero_name = IMAGE_NAMES4[j];
                         stopAutoScrolling();
                         clickedButton.startAnimation(scaleFaceUpAnimation());
                         clickedButton.setSelected(true);
@@ -823,6 +877,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             test2 = 1;
             final ImageView img = new ImageView(this);
             img.setImageResource(IMAGE_IDS5[i]);
+            final int j=i;
             img.setTag(i);
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -833,6 +888,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                             clickTimer = null;
                         }
                         clickedButton = (ImageView) arg0;
+                        hero_name = IMAGE_NAMES5[j];
                         stopAutoScrolling();
                         clickedButton.startAnimation(scaleFaceUpAnimation());
                         clickedButton.setSelected(true);
@@ -874,6 +930,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             test2=1;
             final ImageView img = new ImageView(this);
             img.setImageResource(IMAGE_IDS6[i]);
+            final int j=i;
             img.setTag(i);
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -884,6 +941,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                             clickTimer = null;
                         }
                         clickedButton2 = (ImageView) arg0;
+                        hero_name = IMAGE_NAMES6[j];
                         stopAutoScrolling();
                         clickedButton2.startAnimation(scaleFaceUpAnimation());
                         clickedButton2.setSelected(true);
@@ -987,6 +1045,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             @Override
             public void onAnimationEnd(Animation arg0) {
                 Intent in = new Intent(getBaseContext(), heroesWebview.class);
+                in.putExtra("hero_name", hero_name);
                 startActivity(in);
                 if(faceTimer != null){
                     faceTimer.cancel();
@@ -1031,7 +1090,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             @Override
             public void onAnimationRepeat(Animation arg0) {}
             @Override
-            public void onAnimationEnd(Animation arg0) {
+            public void onAnimationEnd(Animation arg0)
+            {
                 isFaceDown = true;
             }
         };
@@ -1121,6 +1181,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         {
             lives_count.setImageResource(R.drawable.lives1);
         }
+
         else
         {
             lives_count.setVisibility(View.GONE);
@@ -1134,7 +1195,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         views[random].setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Toast.makeText(getBaseContext(), "Correct!", Toast.LENGTH_SHORT).show();
                 ct2.cancel();
                 portrait2();
@@ -1181,8 +1243,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
                             ct2.cancel();
                             currentimage2index2=0;
                             levelReset();
-
-
                         }
                     }
                 });
