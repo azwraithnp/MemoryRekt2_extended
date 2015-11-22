@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:background="@drawable/juggernaut_back"
     android:id="@+id/main_l">
@@ -220,9 +219,10 @@
         <ImageView
             android:layout_width="300dp"
             android:layout_height="170dp"
-            android:background="@drawable/box33"
+            android:background="@drawable/invoker_gamemode_back"
             android:id="@+id/comings1"
-            android:clickable="true"/>
+            android:clickable="true"
+            android:onClick="onClick5"/>
     </TableRow>
 
     <TableRow

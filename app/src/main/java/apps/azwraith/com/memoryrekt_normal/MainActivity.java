@@ -579,6 +579,23 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     public void onClick5(View v) {
 
+        stopAutoScrolling();
+        clearTimerTaks(clickSchedule);
+        clearTimerTaks(scrollerSchedule);
+        clearTimerTaks(faceAnimationSchedule);
+        clearTimers(scrollTimer);
+        clearTimers(clickTimer);
+        clearTimers(faceTimer);
+
+        clickSchedule         = null;
+        scrollerSchedule      = null;
+        faceAnimationSchedule = null;
+        scrollTimer           = null;
+        clickTimer            = null;
+        faceTimer             = null;
+
+        Intent intentInvo = new Intent(getBaseContext(), InvokerActivity.class);
+        startActivity(intentInvo);
 
     }
 
@@ -963,11 +980,14 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             @Override
             public void onAnimationStart(Animation arg0) {
                 isFaceDown = false;
+
             }
             @Override
             public void onAnimationRepeat(Animation arg0) {}
             @Override
             public void onAnimationEnd(Animation arg0) {
+                Intent in = new Intent(getBaseContext(), heroesWebview.class);
+                startActivity(in);
                 if(faceTimer != null){
                     faceTimer.cancel();
                     faceTimer = null;

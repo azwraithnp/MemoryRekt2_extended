@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/invobackgr"
+        android:visibility="visible">
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/quasButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/quas_button_edit"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/wexButton"
+        android:background="@drawable/wex_button_edit"
+        android:layout_toRightOf="@+id/quasButton"
+        android:layout_alignBottom="@+id/quasButton"/>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/exortButton"
+        android:background="@drawable/exort_button_edit"
+        android:layout_toRightOf="@+id/wexButton"
+        android:layout_alignBottom="@+id/quasButton"/>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/invokeButton"
+        android:background="@drawable/invoke_button_edit"
+        android:layout_toRightOf="@+id/exortButton"
+        android:layout_alignBottom="@+id/quasButton"/>
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/snap"
+        android:id="@+id/invo_skills_image"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/quasButton"
+        android:layout_alignStart="@+id/quasButton"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="130dp"
+        android:id="@+id/banner"
+        android:background="@drawable/red_b"
+        android:layout_marginTop="20dp"
+        android:layout_alignTop="@+id/invo_skills_image"
+        android:layout_toRightOf="@+id/wexButton"
+        android:layout_toEndOf="@+id/wexButton"
+        android:alpha="0.5" />
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:src="@drawable/icon_hourglass2"
+        android:id="@+id/hour_glass"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="40dp"
+        android:layout_alignTop="@+id/banner"
+        android:layout_alignRight="@+id/banner"
+        android:layout_alignEnd="@+id/banner" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/COMBO_VIEW"
+            android:layout_alignTop="@+id/banner"
+            android:layout_toRightOf="@+id/invo_skills_image"
+            android:layout_toEndOf="@+id/invo_skills_image" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:id="@+id/skillsName"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/invo_skills_image"
+            android:layout_alignLeft="@+id/invo_skills_image"
+            android:layout_alignStart="@+id/invo_skills_image" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:id="@+id/shade"
+        android:alpha="0.8">
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/play_b"
+        android:src="@drawable/normal_play_button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible" />
+
+    <ImageView
+        android:visibility="visible"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:id="@+id/easy_b"
+        android:background="@drawable/normal_easy_button"
+        android:layout_above="@+id/play_b"
+        android:layout_marginBottom="40dp" />
+
+
+
+    <ImageView
+        android:visibility="visible"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:id="@+id/medium_b"
+        android:background="@drawable/normal_medium_button"
+        android:layout_above="@+id/play_b"
+        android:layout_marginBottom="40dp"
+        android:layout_toRightOf="@+id/easy_b"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageView
+        android:visibility="visible"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:id="@+id/hard_b"
+        android:background="@drawable/normal_hard_button"
+        android:layout_above="@+id/play_b"
+        android:layout_marginBottom="40dp"
+        android:layout_toRightOf="@+id/medium_b"
+        android:layout_marginLeft="10dp"/>
+
+
+
+
+    <ImageView
+        android:visibility="gone"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:id="@+id/banner2"
+        android:background="@drawable/banner_set_1"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/score_display"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:visibility="gone"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/close_b"
+        android:src="@drawable/circle_close_delete"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+
+</RelativeLayout>
+
