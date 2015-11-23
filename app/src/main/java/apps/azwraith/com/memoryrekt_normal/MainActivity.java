@@ -264,12 +264,6 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
 
 
-        border_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                border_img.setBackgroundResource(R.drawable.whatsthatskill_final_clicked);
-            }
-        });
 
         int ic_limit = Integer.parseInt(getFromSP2("slide"));
 

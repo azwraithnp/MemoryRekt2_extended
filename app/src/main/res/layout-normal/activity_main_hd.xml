@@ -238,6 +238,7 @@
             android:layout_height="170dp"
             android:background="@drawable/whatsthatskill_final"
             android:id="@+id/intro"
+            android:onClick="onClick"
             android:layout_centerHorizontal="true" />
 
     </TableRow>
