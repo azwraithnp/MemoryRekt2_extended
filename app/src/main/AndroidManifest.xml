@@ -40,7 +40,7 @@
         </activity>
 
         <activity android:name=".heroesWebview"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/MyTheme"></activity>
 
     </application>
 
