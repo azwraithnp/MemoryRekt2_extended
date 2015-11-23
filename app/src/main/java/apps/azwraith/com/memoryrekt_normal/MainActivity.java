@@ -489,12 +489,15 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     public void portrait() {
 
+
         views[0].setBackgroundResource(R.drawable.choice_box);
         views[0].setTextColor(Color.BLACK);
         views[1].setBackgroundResource(R.drawable.choice_box);
         views[1].setTextColor(Color.BLACK);
         views[2].setBackgroundResource(R.drawable.choice_box);
         views[2].setTextColor(Color.BLACK);
+
+
 
         ct = new CountDownTimer(50000, 1000) {
 
@@ -505,7 +508,14 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             public void onFinish() {
                 countd.setText("");
                 lives_counter--;
-                portrait();
+                if(lives_counter==0) {
+                    currentimage2index=0;
+                    levelReset();
+                }
+                else
+                {
+
+                }
             }
         }.start();
 
